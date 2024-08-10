@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App | Quiz Page</title>
+    <link rel="shortcut icon" href="../img/bg-image2.jpg" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../css/quiz.css" />
+  </head>
+  <body>
+    <div class="quiz_app">
+      <i id="music-icon" style="color: white" class="fa fa-music"></i>
+      <audio
+        src="../liqwyd-birthday.mp3"
+        autoplay
+        loop
+        id="background-music"
+      ></audio>
+      <h1 id="greetings"></h1>
+      <div class="quiz_questions">
+        <h1 data-quiz_questions></h1>
+      </div>
+      <div class="quiz_options" data-quiz_options>
+        <ul>
+          <li class="option" id="option1"></li>
+          <li class="option" id="option2"></li>
+          <li class="option" id="option3">li></li>
+        </ul>
+      </div>
+      <div class="next_btn_con">
+        <button class="next_btn" data-next_btn>Next</button>
+      </div>
+      <div class="submit_btn_con">
+        <button class="submit_btn" style="display: none">Submit</button>
+      </div>
+    </div>
+
+    <script>
+      let greetings = document.getElementById("greetings");
+
+      // Retrieve username from local storage with key name of username
+      let storedUsername = localStorage.getItem("username"); 
+
+      if (storedUsername) {
+        let h1 = document.createElement("h1");
+        h1.innerHTML = `Welcome!,  ${storedUsername}`;
+        greetings.appendChild(h1);
+      }
+
+      const musicIcon = document.getElementById("music-icon");
+      const backgroundMusic = document.getElementById("background-music");
+
+      musicIcon.addEventListener("click", toggleMusic);
+
+      function toggleMusic() {
+        if (backgroundMusic.paused) {
+          backgroundMusic.play();
+          musicIcon.classList.remove("fa-play");
+        } else {
+          backgroundMusic.pause();
+          musicIcon.classList.remove("fa-pause");
+          musicIcon.classList.add("fa-play");
+        }
+      }
+    </script>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
